@@ -1,16 +1,12 @@
+<!-- TO DO: model-level validations if any -->
 
+<%= @csv.errors.full_messages.first if @csv.errors.any? %>
 
 <%=  form_with model: @csv do |form| %>
-	<!-- TO DO show errors if any -->
-	
 	<div class="mb-3" >
-
 		<%= form.label "File"  %><br>
 		<%= form.file_field :file %>
 	</div>
-	
-	<%= form.submit 'Upload CSV' %>
+	<%= form.submit 'Upload CSV', class: "btn btn-primary btn-lg" %>
 	<hr>
-
-
 <% end %>

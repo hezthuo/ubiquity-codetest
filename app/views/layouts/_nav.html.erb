@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;"">
+  <div class="container">
+    <%= link_to("BOOK EXPLORER", root_path, class: "navbar-brand" ) %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to("Home", root_path, class: "nav-link active" ) %>
+        <%= link_to("My CSVs", csvs_path, class: "nav-link active" ) %>
+        <%= link_to("Upload CSV", csvs_path, class: "nav-link active" ) %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -41,10 +41,16 @@ class CsvsController < ApplicationController
     @user.csvs << @csv
     
     if @user.save
-      puts @csv.file.inspect
+      # save CSV name and URL to DB
+      @user.csvs.last.update_attribute(:name, @csv.file.blob.filename)
+      @user.csvs.last.update_attribute(:csv_url, @csv.file.blob.url)
+      
+      
+      puts 'RENAMED:'
+      puts @user.csvs.last.name
 
-      flash[:success] = 'file ' + @csv.file.blob.filename.to_s + ' uploaded successfully' 
-      redirect_to csvs_path
+      flash[:success] = 'file uploaded successfully' 
+      redirect_to csv_path(@csv)
     else
       flash[:notice] = @csv.errors.full_messages.first
       redirect_to new_csv_path
@@ -53,6 +59,9 @@ class CsvsController < ApplicationController
   end
 
   def show
+    @csv = Csv.find(params[:id])
+    @title = @csv.name
+    @parsed_csv ||= CSV.parse(@csv.file.download, col_sep: ",", row_sep: :auto, skip_blanks: true)
   end
 
   def new

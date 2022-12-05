@@ -1,2 +1,21 @@
-<h1>Csvs#show</h1>
-<p>Find me in app/views/csvs/show.html.erb</p>
+<h3 class="display4 container m-3"><%= @csv.name %></h3>
+<div class="container m-4 border ">
+	<table class="table">
+	  <tbody>
+	  	<% @parsed_csv.each_with_index do | row, index |  %>
+	    <tr>
+	      <th scope="row"><%= index unless index == 0 %></th>
+		      <% row.each do | r | %>
+		      	<!-- use first index as table header -->
+		      	<% if index == 0  %>
+		      		<th scope="col"><%= r  %></th>
+		      	<% end %>
+		      	<!-- skip first first row as already used as header-->
+		      	<% next if index == 0 %>
+		      	<td ><%= r  %></td>
+		      <% end %>
+	      <% end %>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
