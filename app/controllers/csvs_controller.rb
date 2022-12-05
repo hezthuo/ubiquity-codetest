@@ -29,13 +29,6 @@ class CsvsController < ApplicationController
     puts csv.validate_rows
     return redirect_to new_csv_path, alert: "UUID column has bad data" unless csv.validate_rows
   
-
-    # validated_csv = RowValidator.new(file)
-    puts "PARSED FILE TO CONSOLE..."
-    
-    # parsed_csv = CSV.parse(file.path, col_sep: ",", row_sep: :auto, skip_blanks: true)
-    # puts parsed_csv[0].class
-    
     @csv = Csv.create(csv_params)
     @user = current_user
     @user.csvs << @csv
