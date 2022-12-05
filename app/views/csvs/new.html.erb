@@ -1,0 +1,16 @@
+
+
+<%=  form_with model: @csv do |form| %>
+	<!-- TO DO show errors if any -->
+	
+	<div class="mb-3" >
+
+		<%= form.label "File"  %><br>
+		<%= form.file_field :file %>
+	</div>
+	
+	<%= form.submit 'Upload CSV' %>
+	<hr>
+
+
+<% end %>
