@@ -12,7 +12,7 @@ amazon:
   service: S3
   access_key_id: ENV["access_key_id"]
   secret_access_key: ENV["secret_access_key"]
-  region: ENV["eu-west-2"]
+  region: "eu-west-2"
   bucket: ENV["bucket"]
 
 # Remember not to checkin your GCS keyfile to a repository
